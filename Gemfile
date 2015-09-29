@@ -18,6 +18,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 
+# devise angular
+gem 'devise'
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -39,7 +45,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'better_errors'
+  gem 'binding_of_caller'
   # for testing
   gem 'rspec-rails'
 
@@ -49,4 +56,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
