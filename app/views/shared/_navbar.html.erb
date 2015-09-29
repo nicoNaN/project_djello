@@ -1,0 +1,10 @@
+<%= nav_bar fixed: :top, responsive: true do %>
+  <%= menu_group do %>
+    <%= menu_item "Djello", unauthenticated_root_path %>
+  <% end %>
+
+  <%= menu_group pull: :right do %>
+    <%= menu_item "welcome, #{current_user.email}"%> 
+    <%= menu_item "log out", destroy_user_session_path, method: "DELETE" %>
+  <% end %>
+<% end %>
