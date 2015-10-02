@@ -1,4 +1,4 @@
-var djello = angular.module('djello', ['ui.router', 'restangular']);
+var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise']);
 
 djello.config(['RestangularProvider', function(RestangularProvider) {
   RestangularProvider.setBaseUrl('/api/v1');
@@ -7,7 +7,7 @@ djello.config(['RestangularProvider', function(RestangularProvider) {
 
 djello.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/boards/index");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
     .state('boards', {
@@ -19,5 +19,11 @@ djello.config(function($stateProvider, $urlRouterProvider) {
       url: "/index",
       templateUrl: "/templates/boardsIndex.html",
       controller: "boardCtrl"
+    })
+
+    .state('login', {
+      url: "/",
+      templateUrl: "/templates/login.html",
+      controller: "loginCtrl"
     });
 });

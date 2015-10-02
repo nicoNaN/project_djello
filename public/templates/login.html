@@ -1,0 +1,17 @@
+<div class="login-container">
+  <h1>Login</h1>
+    <div class="input-group">
+      <br>
+      <input type="text" class="form-control" placeholder="Email" ng-model='credentials.email'>
+      <br>
+      <input type="password" class="form-control" placeholder="Password" ng-model='credentials.password'>
+      <br>
+      <input type="password" class="form-control" placeholder="Password Confirmation" ng-model='credentials.password_confirmation'>
+      <br>
+      <button class="btn btn-primary" ng-click="login()">Login</button>
+    </div>
+  <h4>CREDENTIALS DEBUG</h4>
+  {{credentials}}
+  <h4>CURRENT USER DEBUG</h4>
+  {{currentUser}}
+</div>
