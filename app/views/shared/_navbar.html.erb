@@ -4,7 +4,7 @@
   <% end %>
 
   <%= menu_group pull: :right do %>
-    <%= menu_item "welcome, #{current_user.email}"%> 
+    <%= menu_item "welcome, #{current_user.email}"%>
     <%= menu_item "log out", destroy_user_session_path, method: "DELETE" %>
   <% end %>
 <% end %>

@@ -15,5 +15,8 @@
 //= require twitter/bootstrap
 
 //=require angular
+//= require restangular
+//= require angular-ui-router
+
 
 //= require_tree .

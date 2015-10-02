@@ -1,5 +1,18 @@
-var djello = angular.module('djello', []);
+var djello = angular.module('djello', ['ui.router']);
 
-djello.controller('TestCtrl', ['$scope', function($scope){
-  $scope.hello = "ayy lmangular";
-}]);
+djello.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise("/boards/index");
+
+  $stateProvider
+    .state('boards', {
+      url: "/boards",
+      templateUrl: "/templates/boards.html"
+    })
+
+    .state('boards.index', {
+      url: "/index",
+      templateUrl: "/templates/boardsIndex.html",
+      controller: "boardCtrl"
+    });
+});
