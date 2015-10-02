@@ -1,4 +1,9 @@
-var djello = angular.module('djello', ['ui.router']);
+var djello = angular.module('djello', ['ui.router', 'restangular']);
+
+djello.config(['RestangularProvider', function(RestangularProvider) {
+  RestangularProvider.setBaseUrl('/api/v1');
+  RestangularProvider.setRequestSuffix('.json');
+}]);
 
 djello.config(function($stateProvider, $urlRouterProvider) {
 

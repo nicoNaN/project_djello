@@ -1,3 +1,3 @@
-djello.controller('boardCtrl', ['$scope', function($scope){
-  $scope.hello = "ayy lmangular";
+djello.controller('boardCtrl', ['$scope', 'Restangular', function($scope, Restangular){
+  $scope.boards = Restangular.all('boards').getList().$object;
 }]);

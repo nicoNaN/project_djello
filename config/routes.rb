@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :api do
+    scope :v1 do
+      resources :boards
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
