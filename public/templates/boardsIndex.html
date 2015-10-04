@@ -1,11 +1,18 @@
-<h4>Board Actions</h4>
-<ul>
-  <li><a href="#">Create Board</a></li>
-</ul>
+<form name="boardForm" ng-submit="createBoard()" novalidate>
+  <h3>Create a board</h3>
+
+  <label>Board title: <input type="text" name="boardTitle" ng-model="newBoardTitle" required></label>
+  <div role="alert">
+    <br />
+    <span ng-show="boardForm.boardTitle.$error.required">Please enter a board name!</span>
+  </div>
+  <br />
+  <button type="submit" ng-disabled="boardForm.$invalid">Create Board</button>
+</form>
 
 <br />
 
-<h4>My boards</h4>
+<h3>My boards</h3>
 <ul>
   <li ng-repeat="board in boards">{{ board.title }}<a href="#" ng-click="deleteBoard(board)"> x</a></li>
 </ul>

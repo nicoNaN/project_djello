@@ -15,4 +15,13 @@ djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
     });
   };
 
+  $scope.createBoard = function(board) {
+    var newBoard = { title: $scope.newBoardTitle };
+    var post = $scope.boards.post(newBoard);
+
+    post.then(function(response) {
+      $scope.boards.push(response);
+    });
+  };
+
 }]);

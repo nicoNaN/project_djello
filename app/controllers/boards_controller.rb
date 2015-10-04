@@ -8,6 +8,18 @@ class BoardsController < ApplicationController
     end
   end
 
+  def create
+    @board = current_user.boards.create(whitelisted_board_params)
+
+    respond_to do |format|
+      if @board.save
+        format.json { render json: @board }
+      else
+        format.json { render nothing: true, status: 404 }
+      end
+    end
+  end
+
   def destroy
     @board = Board.find_by_id(params[:id])
 
@@ -18,5 +30,9 @@ class BoardsController < ApplicationController
         format.json { render nothing: true, status: 404 }
       end
     end
+  end
+
+  def whitelisted_board_params
+    params.require(:board).permit(:title)
   end
 end
