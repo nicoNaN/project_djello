@@ -14,5 +14,5 @@
 
 <h3>My boards</h3>
 <ul>
-  <li ng-repeat="board in boards">{{ board.title }}<a href="#" ng-click="deleteBoard(board)"> x</a></li>
+  <li ng-repeat="board in boards"><a ui-sref="boards.show({boardId: board.id})">{{ board.title }}</a><a href="#" ng-click="deleteBoard(board)"> x</a></li>
 </ul>

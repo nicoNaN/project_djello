@@ -8,6 +8,18 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @board
+        format.json { render json: @bord }
+      else
+        format.json { render nothing: true, status: 404 }
+      end
+    end
+  end
+
   def create
     @board = current_user.boards.create(whitelisted_board_params)
 

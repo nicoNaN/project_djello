@@ -21,6 +21,12 @@ djello.config(function($stateProvider, $urlRouterProvider) {
       controller: "boardCtrl"
     })
 
+    .state('boards.show', {
+      url: "/:boardId",
+      templateUrl: "/templates/boardShow.html",
+      controller: "boardShowCtrl"
+    })
+
     .state('login', {
       url: "/",
       templateUrl: "/templates/login.html",
