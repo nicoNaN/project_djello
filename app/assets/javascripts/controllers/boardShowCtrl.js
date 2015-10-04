@@ -5,5 +5,14 @@ djello.controller('boardShowCtrl', ['$scope', 'Restangular', 'Auth', '$location'
     $scope.lists = $scope.board.getList("lists").$object;
   });
 
+  $scope.createList = function(list) {
+    var newList = { title: $scope.newListTitle,
+                    description: $scope.newListDescription };
+    var post = $scope.lists.post(newList);
+
+    post.then(function(response) {
+      $scope.lists.push(response);
+    });
+  };
 
 }]);
