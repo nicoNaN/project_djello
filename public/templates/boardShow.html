@@ -18,5 +18,14 @@
 
 <h3>{{ board.title }}'s lists:</h3>
 <ul>
-  <li ng-repeat="list in lists">{{ list.title }}</li>
+  <li ng-repeat="list in lists">{{ list.title }}
+    <ul>
+      <li>{{ list.description }}</li>
+      <li>Cards:
+        <ul>
+          <li ng-repeat="card in list.cards">{{ card.title }}</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>

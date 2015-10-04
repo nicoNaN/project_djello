@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   scope :api do
     scope :v1 do
       resources :boards do
-        resources :lists
-        resources :cards
+        resources :lists do
+          resources :cards
+        end
         resources :activities
       end
     end
