@@ -1,9 +1,11 @@
 djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', function($scope, Restangular, Auth){
 
   Auth.currentUser().then(function(user) {
-    $scope.currentUser = user.id;
+    $scope.currentUser = user;
   });
 
-  $scope.boards = Restangular.one('users', $scope.currentUser).getList('boards').$object;
+  Restangular.all('boards').getList().then(function(boards) {
+    $scope.boards = boards;
+  });
 
 }]);

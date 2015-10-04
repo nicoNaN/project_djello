@@ -7,5 +7,5 @@
 
 <h4>My boards</h4>
 <ul>
-  <li>{{ currentUser }}</li>
+  <li ng-repeat="board in boards">{{ board.title }}</li>
 </ul>

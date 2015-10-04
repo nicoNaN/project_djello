@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Board.where("user_id = ?", current_user.id)
+    @boards = current_user.boards
 
     respond_to do |format|
       format.html
