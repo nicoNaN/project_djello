@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board
-        format.json { render json: @bord }
+        format.json { render json: @board }
       else
         format.json { render nothing: true, status: 404 }
       end
