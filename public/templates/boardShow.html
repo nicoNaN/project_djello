@@ -13,7 +13,25 @@
     <span ng-show="listForm.listDescription.$error.required">Please enter a list description!</span>
   </div>
   <br />
-  <button type="submit" ng-disabled="boardForm.$invalid">Create Board</button>
+  <button type="submit" ng-disabled="boardForm.$invalid">Create List</button>
+</form>
+
+<form name="cardForm" ng-submit="createCard()" novalidate>
+  <h3>Create a card:</h3>
+
+  <label>Card title: <input type="text" name="cardTitle" ng-model="newCardTitle" required></label>
+  <br />
+  <label>Card description: <input type="text" name="cardDescription" ng-model="newCardDescription" required></label>
+  <br />
+  <label>List ID (DEBUG): <input type="text" name="cardListID" ng-model="newCardListID" required></label>
+  <div role="alert">
+    <br />
+    <span ng-show="cardForm.cardTitle.$error.required">Please enter a card title!</span>
+    <br />
+    <span ng-show="listForm.cardDescription.$error.required">Please enter a card! description!</span>
+  </div>
+  <br />
+  <button type="submit" ng-disabled="boardForm.$invalid">Create Card</button>
 </form>
 
 <h3>{{ board.title }}'s lists:</h3>
