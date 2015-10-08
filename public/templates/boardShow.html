@@ -41,7 +41,11 @@
       <li>{{ list.description }}</li>
       <li>Cards:
         <ul>
-          <li ng-repeat="card in list.cards">{{ card.title }}</li>
+          <li ng-repeat="card in list.cards">{{ card.title }}
+            <ul>
+              <li ng-repeat="member in card.members">aa</li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>

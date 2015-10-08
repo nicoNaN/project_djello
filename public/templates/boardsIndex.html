@@ -13,6 +13,6 @@
 <br />
 
 <h3>My boards</h3>
-<ul>
-  <li ng-repeat="board in boards"><a ui-sref="boards.show({boardId: board.id})">{{ board.title }}</a><a href="#" ng-click="deleteBoard(board)"> x</a></li>
-</ul>
+<select class="form-control" ng-model="selectedBoard" ng-change="goToBoard()">
+  <option ng-repeat="board in boards" value="{{board.id}}">{{board.title}}</option>
+</select>

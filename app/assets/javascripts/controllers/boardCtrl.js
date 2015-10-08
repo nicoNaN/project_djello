@@ -6,6 +6,7 @@ djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
 
   Restangular.all('boards').getList().then(function(boards) {
     $scope.boards = boards;
+    console.log($scope.boards);
   });
 
   // refactor this in to board service, do same for cards and lists
@@ -23,6 +24,11 @@ djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
     post.then(function(response) {
       $scope.boards.push(response);
     });
+  };
+
+  $scope.goToBoard = function() {
+    console.log($scope.selectedBoard);
+    $location.path("/boards/" + String($scope.selectedBoard));
   };
 
 }]);

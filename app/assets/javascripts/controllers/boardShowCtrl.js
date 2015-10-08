@@ -1,13 +1,17 @@
-djello.controller('boardShowCtrl', ['$scope', 'Restangular', 'Auth', '$location', function($scope, Restangular, Auth, $location){
+djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, $stateParams, Restangular, Auth, $location){
 
   Restangular.all('boards').getList().then(function(boards) {
-    $scope.board = boards[0];
+    $scope.board = boards[$stateParams.boardId - 1];
     // $scope.lists = $scope.board.getList("lists").$object;
     $scope.board.getList('lists').then(function(lists) {
       $scope.lists = lists;
       // n+1, use rails jbuilder templates
       $scope.lists.forEach(function(list) {
-        list.cards = Restangular.one('boards', $scope.board.id).one('lists', list.id).getList('cards').$object;
+        list.cards = Restangular
+          .one('boards', $scope.board.id)
+          .one('lists', list.id)
+          .getList('cards')
+          .$object;
       });
     });
   });
