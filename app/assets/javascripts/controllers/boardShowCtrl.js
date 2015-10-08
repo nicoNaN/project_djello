@@ -1,7 +1,9 @@
 djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, $stateParams, Restangular, Auth, $location){
 
   Restangular.all('boards').getList().then(function(boards) {
+    $scope.allBoards = boards;
     $scope.board = boards[$stateParams.boardId - 1];
+    $scope.selectedBoard = $scope.board.id;
     // $scope.lists = $scope.board.getList("lists").$object;
     $scope.board.getList('lists').then(function(lists) {
       $scope.lists = lists;
@@ -41,6 +43,19 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
       .all('cards').post(newCard).then(function(response) {
         $scope.lists[newCard.list_id - 1].cards.push(response);
       });
+  };
+
+  // refactor this in to board service, do same for cards and lists
+  $scope.deleteBoard = function(board) {
+    board.remove().then(function(){
+      // http://stackoverflow.com/questions/18523806/deleting-entry-with-restangular
+      $location.path("/boards/index");
+    });
+  };
+
+  $scope.goToBoard = function() {
+    console.log($scope.selectedBoard);
+    $location.path("/boards/" + String($scope.selectedBoard));
   };
 
 }]);

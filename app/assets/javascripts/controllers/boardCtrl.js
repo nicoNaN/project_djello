@@ -9,17 +9,8 @@ djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
     console.log($scope.boards);
   });
 
-  // refactor this in to board service, do same for cards and lists
-  $scope.deleteBoard = function(board) {
-    board.remove().then(function(){
-      // http://stackoverflow.com/questions/18523806/deleting-entry-with-restangular
-      $scope.boards.splice($scope.boards.indexOf(board), 1);
-    });
-  };
-
   $scope.createBoard = function(board) {
-    var newBoard = { title: $scope.newBoardTitle };
-    var post = $scope.boards.post(newBoard);
+    var post = $scope.boards.post($scope.newBoard);
 
     post.then(function(response) {
       $scope.boards.push(response);

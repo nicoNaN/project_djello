@@ -1,18 +1,24 @@
-<form name="boardForm" ng-submit="createBoard()" novalidate>
-  <h3>Create a board</h3>
+<div class="row">
 
-  <label>Board title: <input type="text" name="boardTitle" ng-model="newBoardTitle" required></label>
-  <div role="alert">
-    <br />
-    <span ng-show="boardForm.boardTitle.$error.required">Please enter a board name!</span>
+  <div class="col-sm-8">
+    <form name="boardForm" ng-submit="createBoard()" novalidate>
+      <h3>Create a board</h3>
+
+      <label>Board title: <input type="text" name="boardTitle" ng-model="newBoard.title" required></label>
+      <div role="alert">
+        <br />
+        <span ng-show="boardForm.boardTitle.$error.required">Please enter a title for your board!</span>
+      </div>
+      <br />
+      <button type="submit" ng-disabled="boardForm.$invalid">Create Board</button>
+    </form>
   </div>
-  <br />
-  <button type="submit" ng-disabled="boardForm.$invalid">Create Board</button>
-</form>
 
-<br />
+  <div class="col-sm-4">
+    <h3>My boards</h3>
+    <select class="form-control" ng-model="selectedBoard" ng-change="goToBoard()">
+      <option ng-repeat="board in boards" value="{{board.id}}">{{board.title}}</option>
+    </select>
+  </div>
 
-<h3>My boards</h3>
-<select class="form-control" ng-model="selectedBoard" ng-change="goToBoard()">
-  <option ng-repeat="board in boards" value="{{board.id}}">{{board.title}}</option>
-</select>
+</div>
