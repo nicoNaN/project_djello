@@ -29,6 +29,7 @@ class CardsController < ApplicationController
     @board = Board.find_by_id(params[:board_id])
     @list = @board.lists.find_by_id(params[:list_id])
     @card = @list.cards.create(whitelisted_card_params)
+    @card.members << current_user
 
     respond_to do |format|
       if @card.save
@@ -42,7 +43,7 @@ class CardsController < ApplicationController
   private
 
   def whitelisted_card_params
-    params.require(:card).permit(:title, :description)
+    params.require(:card).permit(:title, :description, :list_id, :user_id)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004210602) do
+ActiveRecord::Schema.define(version: 20151008010559) do
 
   create_table "boards", force: :cascade do |t|
     t.integer  "user_id"
@@ -36,7 +36,15 @@ ActiveRecord::Schema.define(version: 20151004210602) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "user_boards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
+    t.integer  "card_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
