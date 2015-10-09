@@ -18,6 +18,10 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
     });
   });
 
+  $scope.updateBoardTitle = function() {
+    $scope.board.put();
+  };
+
   $scope.createList = function(list) {
     var newList = { title: $scope.newListTitle,
                     description: $scope.newListDescription };

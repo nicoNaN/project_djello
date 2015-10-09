@@ -19,6 +19,7 @@
 //= require restangular
 //= require angular-ui-router
 //=require angular-devise
+//=require xeditable
 
 
 //= require_tree .

@@ -1,4 +1,8 @@
-var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise']);
+var djello = angular.module('djello', ['xeditable', 'ui.router', 'restangular', 'Devise']);
+
+djello.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});
 
 djello.config(['RestangularProvider', function(RestangularProvider) {
   RestangularProvider.setBaseUrl('/api/v1');
