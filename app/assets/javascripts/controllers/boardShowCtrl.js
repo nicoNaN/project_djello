@@ -2,7 +2,7 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
 
   Restangular.all('boards').getList().then(function(boards) {
     $scope.allBoards = boards;
-    $scope.board = boards[$stateParams.boardId - 1];
+    $scope.board = _.find(boards, function(b) { return b.id == $stateParams.boardId });
     $scope.selectedBoard = $scope.board.id;
     // $scope.lists = $scope.board.getList("lists").$object;
     $scope.board.getList('lists').then(function(lists) {
