@@ -27,7 +27,7 @@
 
     <h3>{{ board.title }}'s lists:</h3>
     <div class="row">
-      <list ng-repeat="list in lists" list="list" delete-list="deleteList(list)" update-list="updateList(list)"></list>
+      <list ng-repeat="list in lists" list="list" create-blank-card="createBlankCard(list)" delete-list="deleteList(list)" update-list="updateList(list)"></list>
     </div>
     <!-- <ul>
       <li ng-repeat="list in lists">{{ list.title }}

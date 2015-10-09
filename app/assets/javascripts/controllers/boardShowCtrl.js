@@ -63,6 +63,20 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
       });
   };
 
+  $scope.createBlankCard = function(list) {
+    var newCard = { title: "New card",
+                    description: "New card description",
+                    list_id: list.id }
+
+    Restangular
+      .one('boards', $scope.board.id)
+      .one('lists', newCard.list_id)
+      .all('cards').post(newCard).then(function(response) {
+        var cardList = _.find($scope.lists, function(l) { return l.id == list.id });
+        cardList.cards.push(response);
+      });
+  };
+
   $scope.deleteList = function(list) {
     list.remove().then(function() {
       $scope.lists.splice($scope.lists.indexOf(list), 1);

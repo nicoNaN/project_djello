@@ -6,7 +6,8 @@ djello.directive('list', function() {
     scope: {
       list: "=",
       deleteList: "&",
-      updateList: "&"
+      updateList: "&",
+      createBlankCard: "&"
     }
   };
 });
