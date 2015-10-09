@@ -25,6 +25,18 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @list.update(whitelisted_list_params)
+        format.json { render json: @list }
+      else
+        format.json { render nothing: true, status: 404 }
+      end
+    end
+  end
+
   def destroy
     @list = List.find_by_id(params[:id])
 

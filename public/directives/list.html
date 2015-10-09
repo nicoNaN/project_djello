@@ -1,7 +1,7 @@
 <div class="col-sm-6 list-container">
 
-  <h4 class="text-center">{{ list.title }}</h4>
-  <p class="text-center"><em>{{ list.description }}</em></p>
+  <h4 class="text-center"><a href="#" editable-text="list.title" onaftersave="updateList(list)">{{ list.title }}</a></h4>
+  <p class="text-center"><em><a href="#" editable-text="list.description" onaftersave="updateList(list)">{{ list.description }}</a></em></p>
 
   <hr />
 

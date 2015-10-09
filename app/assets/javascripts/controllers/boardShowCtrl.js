@@ -22,6 +22,10 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
     $scope.board.put();
   };
 
+  $scope.updateList = function(list) {
+    list.put();
+  }
+
   $scope.createList = function(list) {
     var newList = { title: $scope.newListTitle,
                     description: $scope.newListDescription };

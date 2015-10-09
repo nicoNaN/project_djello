@@ -5,7 +5,8 @@ djello.directive('list', function() {
     replace: true,
     scope: {
       list: "=",
-      deleteList: "&"
+      deleteList: "&",
+      updateList: "&"
     }
   };
 });
