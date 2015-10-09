@@ -3,10 +3,12 @@
   <div class="col-sm-8">
     <h1>Hello from <a href="#" editable-text="board.title" onaftersave="updateBoardTitle()">{{ board.title }}</a>!</h1>
 
-    <form name="listForm" ng-submit="createList()" novalidate>
+    <!-- <form name="listForm" ng-submit="createList()" novalidate> -->
       <h3>Create a list:</h3>
 
-      <label>List title: <input type="text" name="listTitle" ng-model="newListTitle" required></label>
+      <a href="#" ng-click="createBlankList()">Create blank list</a>
+
+      <!-- <label>List title: <input type="text" name="listTitle" ng-model="newListTitle" required></label>
       <br />
       <label>List description: <input type="text" name="listDescription" ng-model="newListDescription" required></label>
       <div role="alert">
@@ -17,7 +19,7 @@
       </div>
       <br />
       <button type="submit" ng-disabled="boardForm.$invalid">Create List</button>
-    </form>
+    </form> -->
 
     <form name="cardForm" ng-submit="createCard()" novalidate>
       <h3>Create a card:</h3>
@@ -38,7 +40,10 @@
     </form>
 
     <h3>{{ board.title }}'s lists:</h3>
-    <ul>
+    <div class="row">
+      <list ng-repeat="list in lists" list="list" delete-list="deleteList(list)"></list>
+    </div>
+    <!-- <ul>
       <li ng-repeat="list in lists">{{ list.title }}
         <ul>
           <li>{{ list.description }}</li>
@@ -53,7 +58,7 @@
           </li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
 
   </div>
 

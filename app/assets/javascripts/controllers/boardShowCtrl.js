@@ -32,6 +32,16 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
     });
   };
 
+  $scope.createBlankList = function() {
+    var newList = { title: "New List Title",
+                    description: "New List Description" };
+    var post = $scope.lists.post(newList);
+
+    post.then(function(response) {
+      $scope.lists.push(response);
+    });
+  };
+
   Auth.currentUser().then(function(user) {
     $scope.currentUser = user;
   });
@@ -47,6 +57,12 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
       .all('cards').post(newCard).then(function(response) {
         $scope.lists[newCard.list_id - 1].cards.push(response);
       });
+  };
+
+  $scope.deleteList = function(list) {
+    list.remove().then(function() {
+      $scope.lists.splice($scope.lists.indexOf(list), 1);
+    });
   };
 
   // refactor this in to board service, do same for cards and lists

@@ -1,0 +1,16 @@
+<div class="col-sm-6 list-container">
+
+  <h4 class="text-center">{{ list.title }}</h4>
+  <p class="text-center"><em>{{ list.description }}</em></p>
+
+  <hr />
+
+  <div class="container-fluid">
+    <card ng-repeat="card in list.cards" card="card"></card>
+  </div>
+
+  <hr />
+
+  <a href="#" ng-click="deleteList(list)">Delete this list?</a>
+
+</div>

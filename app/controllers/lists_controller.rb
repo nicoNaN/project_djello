@@ -25,6 +25,18 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @list.destroy
+        format.json { render json: @list }
+      else
+        format.json { render nothing: true, status: 404 }
+      end
+    end
+  end
+
   private
 
   def whitelisted_list_params
