@@ -9,7 +9,7 @@
 
     <h3>{{ board.title }}'s lists:</h3>
     <div class="row">
-      
+
       <div ng-repeat="list in lists" class="col-sm-6 list-container">
 
         <h4 class="text-center"><a href="#" editable-text="list.title" onaftersave="updateList(list)">{{ list.title }}</a></h4>
@@ -18,7 +18,7 @@
         <hr />
 
         <div class="container-fluid">
-          <card ng-repeat="card in list.cards" card="card" show-card="showCard(card)"></card>
+          <card ng-repeat="card in list.cards" card="card" show-card="showCard(card, list)"></card>
         </div>
 
         <br />

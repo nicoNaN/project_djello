@@ -96,14 +96,22 @@ djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'R
     $location.path("/boards/" + String($scope.selectedBoard));
   };
 
-  $scope.showCard = function(card) {
+  $scope.showCard = function(card, list) {
 
-  ModalService.showModal({
-    templateUrl: "/modals/card.html",
-    controller: "cardModalCtrl",
-    inputs: {
-      card: card
-    }
+    var members = Restangular
+      .one('boards', $scope.board.id)
+      .one('lists', list.id)
+      .one('cards', card.id)
+      .all('members').getList().$object;
+
+    ModalService.showModal({
+      templateUrl: "/modals/card.html",
+      controller: "cardModalCtrl",
+      inputs: {
+        card: card,
+        list: list,
+        members: members
+      }
     }).then(function(modal) {
       modal.element.modal();
     });

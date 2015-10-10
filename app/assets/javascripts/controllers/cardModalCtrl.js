@@ -1,5 +1,21 @@
-djello.controller('cardModalCtrl', ['$scope', 'ModalService', '$stateParams', 'Restangular', 'Auth', '$location', 'card', function($scope, ModalService, $stateParams, Restangular, Auth, $location, card){
+djello.controller('cardModalCtrl',
+  ['$scope',
+   'Restangular',
+   'ModalService',
+   '$location',
+   'card',
+   'list',
+   'members',
+   function($scope, Restangular, ModalService, $location, card, list, members){
 
   $scope.card = card;
+
+  $scope.members = members;
+
+  $scope.list = list;
+
+  $scope.updateCard = function(card) {
+    card.put();
+  };
 
 }]);

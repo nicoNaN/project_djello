@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
+      resources :users, only: [:index]
       resources :boards do
         resources :lists do
-          resources :cards
+          resources :cards do
+            resources :members
+          end
         end
         resources :activities
       end
