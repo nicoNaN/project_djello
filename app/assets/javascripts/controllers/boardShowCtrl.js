@@ -98,19 +98,16 @@ djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'R
 
   $scope.showCard = function(card) {
 
-  console.log(card);
-
   ModalService.showModal({
     templateUrl: "/modals/card.html",
-    controller: "boardShowCtrl",
+    controller: "cardModalCtrl",
     inputs: {
-      title: "A More Complex Example",
       card: card
     }
-  }).then(function(modal) {
-    modal.element.modal();
-  });
+    }).then(function(modal) {
+      modal.element.modal();
+    });
 
-};
+  };
 
 }]);

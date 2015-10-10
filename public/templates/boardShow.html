@@ -9,7 +9,28 @@
 
     <h3>{{ board.title }}'s lists:</h3>
     <div class="row">
-      <list ng-repeat="list in lists" list="list" show-card="showCard(card)" create-blank-card="createBlankCard(list)" delete-list="deleteList(list)" update-list="updateList(list)"></list>
+      
+      <div ng-repeat="list in lists" class="col-sm-6 list-container">
+
+        <h4 class="text-center"><a href="#" editable-text="list.title" onaftersave="updateList(list)">{{ list.title }}</a></h4>
+        <p class="text-center"><em><a href="#" editable-text="list.description" onaftersave="updateList(list)">{{ list.description }}</a></em></p>
+
+        <hr />
+
+        <div class="container-fluid">
+          <card ng-repeat="card in list.cards" card="card" show-card="showCard(card)"></card>
+        </div>
+
+        <br />
+
+        <a href="#" ng-click="createBlankCard(list)">Add a card</a>
+
+        <hr />
+
+        <a href="#" ng-click="deleteList(list)">Delete this list?</a>
+
+      </div>
+
     </div>
     <!-- <ul>
       <li ng-repeat="list in lists">{{ list.title }}
