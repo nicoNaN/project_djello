@@ -1,4 +1,4 @@
-var djello = angular.module('djello', ['xeditable', 'ui.router', 'restangular', 'Devise']);
+var djello = angular.module('djello', ['angularModalService', 'xeditable', 'ui.router', 'restangular', 'Devise']);
 
 djello.run(function(editableOptions) {
   editableOptions.theme = 'bs3';
@@ -30,12 +30,6 @@ djello.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "/templates/boardShow.html",
       controller: "boardShowCtrl"
     })
-
-    // .state('boards.lists', {
-    //   url: "/:boardId/lists",
-    //   templateUrl: "/templates/boardShow.html",
-    //   controller: "boardShowCtrl"
-    // })
 
     .state('login', {
       url: "/",

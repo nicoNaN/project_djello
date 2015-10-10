@@ -4,7 +4,8 @@ djello.directive('card', function() {
     restrict: "A",
     replace: true,
     scope: {
-      card: "="
+      card: "=",
+      showCard: "&"
     }
   };
 });

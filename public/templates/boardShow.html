@@ -3,31 +3,13 @@
   <div class="col-sm-8">
     <h1>Hello from <a href="#" editable-text="board.title" onaftersave="updateBoardTitle()">{{ board.title }}</a>!</h1>
 
-    <h3>Create a list:</h3>
+    <h3>Create a new list:</h3>
 
     <a href="#" ng-click="createBlankList()">Create blank list</a>
 
-    <form name="cardForm" ng-submit="createCard()" novalidate>
-      <h3>Create a card:</h3>
-
-      <label>Card title: <input type="text" name="cardTitle" ng-model="newCard.title" required></label>
-      <br />
-      <label>Card description: <input type="text" name="cardDescription" ng-model="newCard.description" required></label>
-      <br />
-      <label>List ID (DEBUG): <input type="text" name="cardListID" ng-model="newCard.list_id" required></label>
-      <div role="alert">
-        <br />
-        <span ng-show="cardForm.cardTitle.$error.required">Please enter a card title!</span>
-        <br />
-        <span ng-show="cardForm.cardDescription.$error.required">Please enter a card description!</span>
-      </div>
-      <br />
-      <button type="submit" ng-disabled="cardForm.$invalid">Create Card</button>
-    </form>
-
     <h3>{{ board.title }}'s lists:</h3>
     <div class="row">
-      <list ng-repeat="list in lists" list="list" create-blank-card="createBlankCard(list)" delete-list="deleteList(list)" update-list="updateList(list)"></list>
+      <list ng-repeat="list in lists" list="list" show-card="showCard(card)" create-blank-card="createBlankCard(list)" delete-list="deleteList(list)" update-list="updateList(list)"></list>
     </div>
     <!-- <ul>
       <li ng-repeat="list in lists">{{ list.title }}

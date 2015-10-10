@@ -5,9 +5,11 @@ djello.directive('list', function() {
     replace: true,
     scope: {
       list: "=",
+      card: "=",
       deleteList: "&",
       updateList: "&",
-      createBlankCard: "&"
+      createBlankCard: "&",
+      showCard: "&"
     }
   };
 });

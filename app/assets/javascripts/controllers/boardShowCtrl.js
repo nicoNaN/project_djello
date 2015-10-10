@@ -1,4 +1,4 @@
-djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, $stateParams, Restangular, Auth, $location){
+djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, ModalService, $stateParams, Restangular, Auth, $location){
 
   Restangular.all('boards').getList().then(function(boards) {
     $scope.allBoards = boards;
@@ -24,7 +24,7 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
 
   $scope.updateList = function(list) {
     list.put();
-  }
+  };
 
   $scope.createList = function(list) {
     var newList = { title: $scope.newListTitle,
@@ -66,7 +66,7 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
   $scope.createBlankCard = function(list) {
     var newCard = { title: "New card",
                     description: "New card description",
-                    list_id: list.id }
+                    list_id: list.id };
 
     Restangular
       .one('boards', $scope.board.id)
@@ -95,5 +95,22 @@ djello.controller('boardShowCtrl', ['$scope', '$stateParams', 'Restangular', 'Au
     console.log($scope.selectedBoard);
     $location.path("/boards/" + String($scope.selectedBoard));
   };
+
+  $scope.showCard = function(card) {
+
+  console.log(card);
+
+  ModalService.showModal({
+    templateUrl: "/modals/card.html",
+    controller: "boardShowCtrl",
+    inputs: {
+      title: "A More Complex Example",
+      card: card
+    }
+  }).then(function(modal) {
+    modal.element.modal();
+  });
+
+};
 
 }]);

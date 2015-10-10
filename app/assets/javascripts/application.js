@@ -20,6 +20,7 @@
 //= require angular-ui-router
 //=require angular-devise
 //=require xeditable
+//=require angular-modal-service
 
 
 //= require_tree .
