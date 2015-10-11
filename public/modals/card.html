@@ -21,13 +21,20 @@
           </div>
         </div>
 
+        <a href="#" ng-click="isAddMemberOpen = !isAddMemberOpen">Add a member</a>
+        <div ng-show="isAddMemberOpen">
+          <select class="form-control" ng-model="selectedUser">
+            <option ng-repeat="user in allUsers" value="{{user.id}}">{{ user.email }}</option>
+          </select>
+          <button type="button" ng-click="addMember()" class="btn btn-primary text-right" data-dismiss="modal">Add member</button>
+        </div>
+
         <hr />
 
         <h2>Activity</h2>
       </div>
       <div class="modal-footer">
-        <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">OK</button>
-        <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+        <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">Close window</button>
       </div>
     </div>
   </div>

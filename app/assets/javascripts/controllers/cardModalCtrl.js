@@ -14,6 +14,20 @@ djello.controller('cardModalCtrl',
 
   $scope.list = list;
 
+  $scope.isAddMemberOpen = false;
+
+  Restangular.all('users').getList().then(function(users) {
+    $scope.allUsers = users;
+  });
+
+  $scope.addMember = function() {
+    var post = $scope.members.post($scope.selectedUser);
+
+    post.then(function(response) {
+      $scope.members.push(response);
+    });
+  }
+
   $scope.updateCard = function(card) {
     card.put();
   };
@@ -22,6 +36,6 @@ djello.controller('cardModalCtrl',
     member.remove().then(function() {
       $scope.members.splice($scope.members.indexOf(member), 1);
     });
-  }
+  };
 
 }]);
