@@ -28,7 +28,7 @@ djello.controller('cardModalCtrl',
     .one('lists', $scope.list.id)
     .one('cards', $scope.card.id)
     .all('activities').getList().then(function(activities) {
-      $scope.activities = activities;
+      $scope.activities = activities.reverse();
     });
 
   $scope.addMember = function() {

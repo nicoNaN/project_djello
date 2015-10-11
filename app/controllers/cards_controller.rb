@@ -30,6 +30,7 @@ class CardsController < ApplicationController
     @list = @board.lists.find_by_id(params[:list_id])
     @card = @list.cards.create(whitelisted_card_params)
     @card.members << current_user
+    @card.activities.create(content: "#{current_user.email} created this card on #{@card.created_at.strftime('%A %-m/%-d/%Y')}")
 
     respond_to do |format|
       if @card.save
