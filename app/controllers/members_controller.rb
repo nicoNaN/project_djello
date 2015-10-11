@@ -19,6 +19,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @card.save
         @card.members << @member
+        @card.activities.create(content: "#{current_user.email} added #{@member.email} to this card.")
         format.json { render json: @card.members }
       else
         format.json { render nothing: true, status: 404 }

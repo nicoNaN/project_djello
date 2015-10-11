@@ -32,6 +32,11 @@
         <hr />
 
         <h2>Activity</h2>
+        <div class="row" ng-repeat="activity in activities">
+          <div class="col-sm-6">
+            <strong>{{ activity.content }}</strong>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">Close window</button>

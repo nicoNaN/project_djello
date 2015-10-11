@@ -20,10 +20,10 @@ Rails.application.routes.draw do
       resources :boards do
         resources :lists do
           resources :cards do
+            resources :activities
             resources :members
           end
         end
-        resources :activities
       end
     end
   end

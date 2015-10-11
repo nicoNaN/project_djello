@@ -6,7 +6,8 @@ djello.controller('cardModalCtrl',
    'card',
    'list',
    'members',
-   function($scope, Restangular, ModalService, $location, card, list, members){
+   'board',
+   function($scope, Restangular, ModalService, $location, card, list, members, board){
 
   $scope.card = card;
 
@@ -14,11 +15,21 @@ djello.controller('cardModalCtrl',
 
   $scope.list = list;
 
+  $scope.board = board;
+
   $scope.isAddMemberOpen = false;
 
   Restangular.all('users').getList().then(function(users) {
     $scope.allUsers = users;
   });
+
+  Restangular
+    .one('boards', $scope.board.id)
+    .one('lists', $scope.list.id)
+    .one('cards', $scope.card.id)
+    .all('activities').getList().then(function(activities) {
+      $scope.activities = activities;
+    });
 
   $scope.addMember = function() {
     var post = $scope.members.post($scope.selectedUser);

@@ -110,7 +110,8 @@ djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'R
       inputs: {
         card: card,
         list: list,
-        members: members
+        members: members,
+        board: $scope.board
       }
     }).then(function(modal) {
       modal.element.modal();
