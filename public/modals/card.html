@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><a href="#" editable-text="card.title" onaftersave="updateCard(card)">{{ card.title }}</a></h4>
+        <h2 class="modal-title"><a href="#" editable-text="card.title" onaftersave="updateCard(card)">{{ card.title }}</a></h2>
         <p>In list {{ list.title }}</p>
       </div>
       <div class="modal-body">
@@ -11,14 +11,19 @@
 
         <hr />
 
-        <h4>Members</h4>
-        <ul>
-          <li ng-repeat="member in members">{{ member.email }}</li>
-        </ul>
+        <h2>Members</h2>
+        <div class="row" ng-repeat="member in members">
+          <div class="col-sm-6">
+            <strong>{{ member.email }}</strong>
+          </div>
+          <div class="col-sm-6 text-right">
+            <a href="#" ng-click="removeMember(member)">remove?</a>
+          </div>
+        </div>
 
         <hr />
 
-        <h4>Activity</h4>
+        <h2>Activity</h2>
       </div>
       <div class="modal-footer">
         <button type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">OK</button>

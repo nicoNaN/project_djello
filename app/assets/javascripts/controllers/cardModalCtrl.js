@@ -18,4 +18,10 @@ djello.controller('cardModalCtrl',
     card.put();
   };
 
+  $scope.removeMember = function(member) {
+    member.remove().then(function() {
+      $scope.members.splice($scope.members.indexOf(member), 1);
+    });
+  }
+
 }]);
