@@ -19,7 +19,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @card.save
         @card.members << @member
-        @card.activities.create(content: "#{current_user.email} added #{@member.email} to this card on #{@member.created_at.strftime('%A %-m/%-d/%Y')}")
+        @card.activities.create(content: "#{current_user.email} added #{@member.email} to this card on #{@member.created_at.strftime('%b %-d, %Y')}")
         format.json { render json: @card.members }
       else
         format.json { render nothing: true, status: 404 }
@@ -33,6 +33,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.destroy
+        @card.activities.create(content: "#{current_user.email} removed #{@member.email} from this card on #{Time.now.strftime('%b %-d, %Y')}")
         format.json { render json: @card.members }
       else
         format.json { render nothing: true, status: 404 }
