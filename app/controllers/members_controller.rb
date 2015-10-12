@@ -13,12 +13,14 @@ class MembersController < ApplicationController
   end
 
   def create
+    @board = Board.find_by_id(params[:board_id])
     @card = Card.find_by_id(params[:card_id])
     @member = User.find_by_id(params[:_json])
 
     respond_to do |format|
       if @card.save
         @card.members << @member
+        @member.boards << @board
         @card.activities.create(content: "#{current_user.email} added #{@member.email} to this card on #{@member.created_at.strftime('%b %-d, %Y')}")
         format.json { render json: @card.members }
       else

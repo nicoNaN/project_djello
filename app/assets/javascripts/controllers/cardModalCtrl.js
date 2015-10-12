@@ -3,11 +3,12 @@ djello.controller('cardModalCtrl',
    'Restangular',
    'ModalService',
    '$location',
+   '$state',
    'card',
    'list',
    'members',
    'board',
-   function($scope, Restangular, ModalService, $location, card, list, members, board){
+   function($scope, Restangular, ModalService, $location, $state, card, list, members, board){
 
   $scope.card = card;
 
@@ -37,7 +38,14 @@ djello.controller('cardModalCtrl',
     post.then(function(response) {
       $scope.members.push(response);
     });
-  }
+  };
+
+  $scope.markCompleted = function(card) {
+    card.remove().then(function() {
+      close();
+      $state.reload();
+    });
+  };
 
   $scope.updateCard = function(card) {
     card.put();
