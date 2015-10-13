@@ -17,9 +17,75 @@
 .list-container {
   border: 2px solid black;
   margin: 5px;
+  height: auto;
+  width: 350px;
+  box-sizing: border-box;
 }
 
 .card-container {
   border: 2px solid gray;
   margin: 5px;
+  hover:
+}
+
+div.card-container:hover {
+  background-color: lightblue;
+}
+
+.list-container-two {
+  overflow: hidden;
+  width: 2000px;
+}
+
+.list-item {
+  float: left;
+  background-color: white;
+  width: 250px;
+  height: auto;
+  margin: 20px;
+  border: 2px solid black;
+}
+
+.inner {
+  overflow: hidden;
+  width: auto;
+}
+
+.tilt {
+  transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+}
+
+body {
+  min-width: 1000px;
+}
+
+.column {
+  width: 170px;
+  float: left;
+  padding-bottom: 100px;
+}
+.portlet {
+  margin: 0 1em 1em 0;
+  padding: 0.3em;
+}
+.portlet-header {
+  padding: 0.2em 0.3em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+.portlet-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -8px;
+}
+.portlet-content {
+  padding: 0.4em;
+}
+.portlet-placeholder {
+  border: 1px dotted black;
+  margin: 0 1em 1em 0;
+  height: 50px;
 }

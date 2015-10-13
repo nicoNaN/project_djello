@@ -9,7 +9,7 @@ djello.controller('loginCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
     };
 
     Auth.login($scope.credentials).then(function(user) {
-      console.log(user);
+      // console.log(user);
     }, function(error) {
       //auth failed
     });

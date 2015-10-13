@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = (current_user.blank? ? User.all : User.find(:all, conditions: ["id != ?", current_user.id]))
 
     respond_to do |format|
       if @users

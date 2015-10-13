@@ -1,12 +1,7 @@
 djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', function($scope, Restangular, Auth, $location){
 
-  // Auth.currentUser().then(function(user) {
-  //   $scope.currentUser = user;
-  // });
-
   Restangular.all('boards').getList().then(function(boards) {
     $scope.boards = boards;
-    console.log($scope.boards);
   });
 
   $scope.createBoard = function(board) {
@@ -18,7 +13,6 @@ djello.controller('boardCtrl', ['$scope', 'Restangular', 'Auth', '$location', fu
   };
 
   $scope.goToBoard = function() {
-    console.log($scope.selectedBoard);
     $location.path("/boards/" + String($scope.selectedBoard));
   };
 
