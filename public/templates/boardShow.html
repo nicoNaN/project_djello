@@ -17,9 +17,8 @@
 
         <hr />
 
-        <div class="container-fluid">
+        <div class="container-fluid column">
           <card ng-repeat="card in list.cards" card="card" show-card="showCard(card, list)"></card>
-        </div>
 
         <br />
 
@@ -28,6 +27,7 @@
         <hr />
 
         <a href="#" ng-click="deleteList(list)">Delete this list?</a>
+      </div>
 
       </div>
 
