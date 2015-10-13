@@ -1,4 +1,4 @@
-djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, ModalService, $stateParams, Restangular, Auth, $location){
+djello.controller('boardShowCtrl', ['$scope', '$state', 'ModalService', '$stateParams', 'Restangular', 'Auth', '$location', function($scope, $state, ModalService, $stateParams, Restangular, Auth, $location){
 
   Restangular.all('boards').getList().then(function(boards) {
     $scope.allBoards = boards;
@@ -39,6 +39,7 @@ djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'R
   $scope.createBlankList = function() {
     var newList = { title: "New List Title",
                     description: "New List Description" };
+
     var post = $scope.lists.post(newList);
 
     post.then(function(response) {
@@ -70,10 +71,15 @@ djello.controller('boardShowCtrl', ['$scope', 'ModalService', '$stateParams', 'R
 
     Restangular
       .one('boards', $scope.board.id)
-      .one('lists', newCard.list_id)
+      .one('lists', list.id)
       .all('cards').post(newCard).then(function(response) {
-        var cardList = _.find($scope.lists, function(l) { return l.id == list.id });
-        cardList.cards.push(response);
+        list.cards = Restangular
+          .one('boards', $scope.board.id)
+          .one('lists', list.id)
+          .getList('cards')
+          .$object;
+        // var cardList = _.find($scope.lists, function(l) { return l.id == list.id });
+        list.cards.push(response);
       });
   };
 
